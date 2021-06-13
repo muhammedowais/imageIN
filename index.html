@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>imagIN</title>
+    <link rel="icon" type="image/gif" sizes="36x36" href="assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/style.css?v=1.0" rel="stylesheet">
+</head>
+<body>
+    <div id="imageIN"></div>
+    <div id="imageIN2"></div>
+    <script type="text/javascript" src="assets/js/script.js?v=1.0" ></script>
+    <script type="text/javascript">
+        var imagein = new imageIN({
+            type: 'input',//input, 
+            ele: '#imageIN',
+            name: 'imaginfilename',
+            fontSize: '12px',
+            width: '720px',
+            height: '480px',
+            // background: 'red',
+            // color: '#fff',
+            imageBackground: 'black',
+            fontFamily: '"Roboto", "Noto", sans-serif',
+            border: '1px dashed #0000001a',
+            preLoadImage: 'https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg?v=47faa659a05e',
+            afterCreated: function (obj) {
+                console.log('afterCreated');
+            },
+            afterImageLoaded: function(obj) {
+                console.log('afterSelected');
+            },
+            afterPreLoadImage: function(obj) {
+                console.log('afterPreLoadImage');
+            },
+            afterImageChanged: function(obj) {
+                console.log('afterImageChanged');
+                //obj.Options.ele.querySelector('.imagein-img').style.background = "green";
+            }
+        });
+        var imagein2 = new imageIN({
+            type: 'input',//input, 
+            ele: '#imageIN2',
+            name: 'imaginfilename',
+            fontSize: '12px',
+            width: '360px',
+            height: '640px',
+            background: 'red',
+            color: '#fff',
+            imageBackground: 'blue',
+            fontFamily: '"Roboto", "Noto", sans-serif',
+            border: '1px dashed #0000001a',
+            preLoadImage: 'https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg?v=47faa659a05e',
+            afterCreated: function (obj) {
+                console.log('afterCreated');
+            },
+            afterImageLoaded: function(obj) {
+                console.log('afterSelected');
+            },
+            afterPreLoadImage: function(obj) {
+                console.log('afterPreLoadImage');
+            },
+            afterImageChanged: function(obj) {
+                console.log('afterImageChanged');
+                //obj.Options.ele.querySelector('.imagein-img').style.background = "green";
+            }
+        });
+    </script>
+</body>
+</html>

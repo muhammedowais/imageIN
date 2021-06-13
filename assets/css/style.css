@@ -1,0 +1,62 @@
+.imagein-wrapper {
+	width: 157px;
+    height: 88px;
+	border: 1px dashed #0000001a;
+	font-family: "Roboto", "Noto", sans-serif;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+
+.imagein-wrapper label {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imagein-wrapper svg {
+	width: 15%;
+}
+
+.imagein-wrapper svg > g {
+	fill: #606060;
+}
+
+.imagein-wrapper label > div > div {
+	font-size: 12px;
+	color: #606060;
+}
+
+.imagein-wrapper input[type="file"] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.imagein-wrapper .imagein-img {
+	position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility:hidden;
+}
+
+.imagein-wrapper img {
+    cursor: pointer;
+    margin: auto;
+}
