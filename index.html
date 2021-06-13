@@ -1,67 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>imagIN</title>
-    <link rel="icon" type="image/gif" sizes="36x36" href="assets/img/favicon.png">
+    <title>imageIN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="assets/css/style.css?v=1.0" rel="stylesheet">
+    <style type="text/css">
+        body{
+            text-align: center;
+        }
+        .imagein-wrapper {
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
+    <h3>Example One (Default)</h3>
     <div id="imageIN"></div>
+    <br>
+    <br>
+    <h3>Example Two (Preload Image with customized Width and Height)</h3>
     <div id="imageIN2"></div>
+    <br>
+    <br>
+    <h3>Example Three (Customized Background and Color)</h3>
+    <div id="imageIN3"></div>
+    <br>
+    <br>
+    <h3>Example Four (Javascript Events)</h3>
+    <div id="imageIN4"></div>
+    <br>
+    <br>
+    <a href="https://github.com/muhammedowais/imageIN" target="_blank">Back To imageIN Repository</a>
     <script type="text/javascript" src="assets/js/script.js?v=1.0" ></script>
     <script type="text/javascript">
         var imagein = new imageIN({
-            type: 'input',//input, 
             ele: '#imageIN',
-            name: 'imaginfilename',
-            fontSize: '12px',
-            width: '720px',
-            height: '480px',
-            // background: 'red',
-            // color: '#fff',
-            imageBackground: 'black',
-            fontFamily: '"Roboto", "Noto", sans-serif',
-            border: '1px dashed #0000001a',
-            preLoadImage: 'https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg?v=47faa659a05e',
-            afterCreated: function (obj) {
-                console.log('afterCreated');
-            },
-            afterImageLoaded: function(obj) {
-                console.log('afterSelected');
-            },
-            afterPreLoadImage: function(obj) {
-                console.log('afterPreLoadImage');
-            },
-            afterImageChanged: function(obj) {
-                console.log('afterImageChanged');
-                //obj.Options.ele.querySelector('.imagein-img').style.background = "green";
-            }
+            name: 'imaginfilename1'
         });
         var imagein2 = new imageIN({
-            type: 'input',//input, 
             ele: '#imageIN2',
-            name: 'imaginfilename',
+            name: 'imaginfilename2',
             fontSize: '12px',
-            width: '360px',
-            height: '640px',
+            width: '384px',
+            height: '216px',
+            preLoadImage: 'https://muhammedowais.github.io/imageIN/assets/img/mountain.jpg'
+        });
+        var imagein3 = new imageIN({
+            ele: '#imageIN3',
+            name: 'imaginfilename3',
             background: 'red',
             color: '#fff',
-            imageBackground: 'blue',
-            fontFamily: '"Roboto", "Noto", sans-serif',
-            border: '1px dashed #0000001a',
-            preLoadImage: 'https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg?v=47faa659a05e',
+            imageBackground: 'blue'
+        });
+        var imagein4 = new imageIN({
+            ele: '#imageIN4',
+            name: 'imaginfilename4',
             afterCreated: function (obj) {
                 console.log('afterCreated');
             },
             afterImageLoaded: function(obj) {
-                console.log('afterSelected');
+                alert('afterImageLoaded');
             },
             afterPreLoadImage: function(obj) {
-                console.log('afterPreLoadImage');
+                alert('afterPreLoadImage');
             },
             afterImageChanged: function(obj) {
-                console.log('afterImageChanged');
+                alert('afterImageChanged');
                 //obj.Options.ele.querySelector('.imagein-img').style.background = "green";
             }
         });
