@@ -1,5 +1,5 @@
 # imageIN
 Simple JavaScript Image uploader library
 
-<a href="https://muhammedowais.github.io/imageIN/index.html" target="_blank">DEMO</a>
+<a href="https://muhammedowais.github.io/imageIN" target="_blank">DEMO</a>
 
