@@ -47,7 +47,7 @@ imageIN = function ( options ) {
 	                  </svg>
 	                  <div style="font-size:${_this.Options.fontSize};color:${_this.Options.color};">${_this.Options.labelText}</div>
 	                </div>
-	                <input type="file" name="${_this.Options.name}" id="${_this.Options.name}" title="Click or Drop">
+	                <input type="file" name="${_this.Options.name}" id="${_this.Options.name}" title="Click or Drop" accept="image/*">
 	                <div class="imagein-img-wrapper">
 	                	<div class="imagein-img" style="background-color:${_this.Options.imageBackground}"></div>
 		                <div class="imagein-img-overlay">
