@@ -1,6 +1,7 @@
 .imagein-wrapper {
 	width: 157px;
     height: 88px;
+    max-width: 100%;
 	border: 1px dashed #0000001a;
 	font-family: "Roboto", "Noto", sans-serif;
 	cursor: pointer;
