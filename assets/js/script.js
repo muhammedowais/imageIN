@@ -14,6 +14,7 @@ imageIN = function ( options ) {
         imageBackground: '#000',
         fontFamily: '"Roboto", "Noto", sans-serif',
         border: '1px dashed #0000001a',
+        borderRadius: '0px',
         labelText: 'Upload Image',
         preLoadImage: '',
         afterCreated: '',
@@ -36,7 +37,7 @@ imageIN = function ( options ) {
 	function _createUI( ele ) {
 
 		_this.Options.ele.innerHTML = `
-			<div class="imagein-wrapper" style="width:${_this.Options.width};height:${_this.Options.height};background:${_this.Options.background};border:${_this.Options.border};font-family:${_this.Options.fontFamily}">
+			<div class="imagein-wrapper" style="width:${_this.Options.width};height:${_this.Options.height};background:${_this.Options.background};border:${_this.Options.border};border-radius:${_this.Options.borderRadius};font-family:${_this.Options.fontFamily}">
 	            <label for="${_this.Options.name}">
 	                <div>
 	                  <svg viewBox="3 2 19 19" preserveAspectRatio="xMidYMid meet" focusable="false">
