@@ -13,14 +13,19 @@ imageIN = function ( options ) {
         color: '#606060',
         imageBackground: '#000',
         fontFamily: '"Roboto", "Noto", sans-serif',
-        border: '1px dashed #0000001a',
+        border: '2px dashed #0000001a',
         borderRadius: '0px',
         labelText: 'Upload Image',
         preLoadImage: '',
         afterCreated: '',
         afterImageLoaded: '',
         afterPreLoadImage: '',
-        afterImageChanged: ''
+        afterImageChanged: '',
+        iconType: 'image', //values image, upload
+        dropText: 'Drop Here!',
+        dropBorder: '2px solid #0000001a',
+        dropBackground: 'rgb(245 238 238)',
+        dropColor: '#606060'
 	};
 
 	// Overwriting default values
@@ -31,6 +36,12 @@ imageIN = function ( options ) {
   	this.Options.ele = document.querySelector(this.Options.ele);
   	this.Options.fontFamily = this.Options.fontFamily.replace(/"/g, "'");
 
+  	if ( this.Options.iconType != 'image' && this.Options.iconType != 'upload' ) {
+
+  		this.Options.iconType = 'image';
+
+  	}
+
 	_createUI();
 	_bindEvents();
 
@@ -40,12 +51,10 @@ imageIN = function ( options ) {
 			<div class="imagein-wrapper" style="width:${_this.Options.width};height:${_this.Options.height};background:${_this.Options.background};border:${_this.Options.border};border-radius:${_this.Options.borderRadius};font-family:${_this.Options.fontFamily}">
 	            <label for="${_this.Options.name}">
 	                <div>
-	                  <svg viewBox="3 2 19 19" preserveAspectRatio="xMidYMid meet" focusable="false">
-	                    <g viewBox="0 0 24 24" style="fill:${_this.Options.color};">
-	                        <path d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z"></path>
-	                    </g>
-	                  </svg>
-	                  <div style="font-size:${_this.Options.fontSize};color:${_this.Options.color};">${_this.Options.labelText}</div>
+	                  <div class="imagein-icon-wrapper">
+	                  	${_getIcon( _this.Options.iconType, _this.Options.color )}
+	                  </div>
+	                  <div class="imagein-text" style="font-size:${_this.Options.fontSize};color:${_this.Options.color};">${_this.Options.labelText}</div>
 	                </div>
 	                <input type="file" name="${_this.Options.name}" id="${_this.Options.name}" title="Click or Drop" accept="image/*">
 	                <div class="imagein-img-wrapper">
@@ -80,6 +89,26 @@ imageIN = function ( options ) {
 		var ele = _this.Options.ele;
 		var input = ele.querySelector('input[type="file"]');
 		
+		ele.querySelector('.imagein-wrapper').addEventListener('dragover', function( e ) {
+
+			if ( _containsFiles( e ) ) {
+
+				this.style.border = _this.Options.dropBorder;
+				this.style.background = _this.Options.dropBackground;
+				this.querySelector('.imagein-icon-wrapper').innerHTML = _getIcon( 'drop', _this.Options.dropColor );
+				this.querySelector('.imagein-text').innerHTML = _this.Options.dropText;
+				this.querySelector('.imagein-text').style.color = _this.Options.dropColor;
+				
+			}
+
+		});
+
+		ele.querySelector('.imagein-wrapper').addEventListener('dragleave', function( e ) {
+		            
+			_resetStyle( this );
+
+		});
+
 	    input.addEventListener('change', function( e ) {
             
             if ( this.files && this.files[0] ) {
@@ -105,6 +134,8 @@ imageIN = function ( options ) {
 
 		var ele = _this.Options.ele;
 		var input = ele.querySelector('input[type="file"]');
+
+		_resetStyle( ele.querySelector('.imagein-wrapper') );
 
 		var image = new Image();
 		image.src = img;
@@ -133,6 +164,50 @@ imageIN = function ( options ) {
 			_this.Options.afterImageLoaded( _this );
 		}
 	
+	}
+
+	function _getIcon( type, color ) {
+
+		var icons = {
+	  		image: `<svg viewBox="3 2 19 19">
+	                    <g viewBox="0 0 24 24">
+	                    	<path fill="${color}" d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z"></path>
+	                    </g>
+	                </svg>`,
+	  		upload: `<svg viewBox="0 0 480 448">
+				 		<path fill="${color}" d="M320 216c0-2-0.75-4.25-2.25-5.75l-88-88c-1.5-1.5-3.5-2.25-5.75-2.25-2 0-4.25 0.75-5.75 2.25l-87.75 87.75c-1.5 1.75-2.5 3.75-2.5 6 0 4.5 3.5 8 8 8h56v88c0 4.25 3.75 8 8 8h48c4.25 0 8-3.75 8-8v-88h56c4.5 0 8-3.75 8-8zM480 288c0 53-43 96-96 96h-272c-61.75 0-112-50.25-112-112 0-43.5 25.25-83 64.5-101.25-0.25-3.75-0.5-7.25-0.5-10.75 0-70.75 57.25-128 128-128 52 0 98.75 31.5 118.5 79.5 11.5-10 26.25-15.5 41.5-15.5 35.25 0 64 28.75 64 64 0 12.25-3.5 24.25-10.25 34.5 43.5 10.25 74.25 49 74.25 93.5z"></path>
+				 	</svg>`,
+	  		drop: `<svg viewBox="0 0 512 512">
+						<path fill="${color}" d="M256 496l240-240h-144v-256h-192v256h-144z"></path>
+					</svg>`
+	  	};
+
+	  	return icons[type];
+	
+	}
+
+	function _resetStyle( ele ) {
+
+		ele.style.border = _this.Options.border;
+		ele.style.background = _this.Options.background;
+		ele.querySelector('.imagein-icon-wrapper').innerHTML = _getIcon( _this.Options.iconType, _this.Options.color );
+		ele.querySelector('.imagein-text').innerHTML = _this.Options.labelText;
+		ele.querySelector('.imagein-text').style.color = _this.Options.color;
+	
+	}
+
+	function _containsFiles( event ) {
+
+	    if (event.dataTransfer.types) {
+	        for (var i = 0; i < event.dataTransfer.types.length; i++) {
+	            if (event.dataTransfer.types[i] == "Files") {
+	                return true;
+	            }
+	        }
+	    }
+	    
+	    return false;
+
 	}
 
 }

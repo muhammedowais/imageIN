@@ -30,12 +30,16 @@
     <div id="imageIN4"></div>
     <br>
     <br>
+    <h3>Example Five (Icon Type Upload)</h3>
+    <div id="imageIN5"></div>
+    <br>
+    <br>
     <a href="https://github.com/muhammedowais/imageIN" target="_blank">Back To imageIN Repository</a>
     <script type="text/javascript" src="assets/js/script.js?v=1.0" ></script>
     <script type="text/javascript">
         var imagein = new imageIN({
             ele: '#imageIN',
-            name: 'imaginfilename1'
+            name: 'imaginfilename1',
         });
         var imagein2 = new imageIN({
             ele: '#imageIN2',
@@ -70,6 +74,11 @@
                 alert('afterImageChanged');
                 //obj.Options.ele.querySelector('.imagein-img').style.background = "green";
             }
+        });
+        var imagein5 = new imageIN({
+            ele: '#imageIN5',
+            name: 'imaginfilename5',
+            iconType: 'upload',
         });
     </script>
 </body>
