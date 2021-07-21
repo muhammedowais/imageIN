@@ -128,16 +128,22 @@ imageIN = function ( options ) {
             if ( this.files && this.files[0] ) {
 
 	            var reader = new FileReader();
+	            var _thisEvent = this;
+
 	            reader.onload = function (e) {
   					
     				_loadImage( e.target.result );
 
     				if ( typeof _this.Options.afterImageChanged === 'function' ) {
-						_this.Options.afterImageChanged( _this );
+
+    					var data = _this;
+    					data.files = _thisEvent.files;
+						_this.Options.afterImageChanged( data );
+
 					}
 
 	            }
-	            reader.readAsDataURL( this.files[0] );
+	            reader.readAsDataURL( _thisEvent.files[0] );
 	        }
 
         });
