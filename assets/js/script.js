@@ -98,6 +98,13 @@ imageIN = function ( options ) {
 				this.querySelector('.imagein-icon-wrapper').innerHTML = _getIcon( 'drop', _this.Options.dropColor );
 				this.querySelector('.imagein-text').innerHTML = _this.Options.dropText;
 				this.querySelector('.imagein-text').style.color = _this.Options.dropColor;
+
+				if ( this.querySelector('.imagein-img img') != null ) {
+
+					this.querySelector('.imagein-img-wrapper').style.visibility = 'hidden';
+					this.querySelector('.imagein-img img').style.visibility = 'hidden';
+
+				}
 				
 			}
 
@@ -106,6 +113,13 @@ imageIN = function ( options ) {
 		ele.querySelector('.imagein-wrapper').addEventListener('dragleave', function( e ) {
 		            
 			_resetStyle( this );
+
+			if ( this.querySelector('.imagein-img img') != null ) {
+
+				this.querySelector('.imagein-img-wrapper').style.visibility = 'visible';
+				this.querySelector('.imagein-img img').style.visibility = 'visible';
+
+			}
 
 		});
 
